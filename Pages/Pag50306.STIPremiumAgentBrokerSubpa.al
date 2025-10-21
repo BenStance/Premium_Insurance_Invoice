@@ -1,0 +1,83 @@
+namespace BCEXPERTROAD.BCEXPERTROAD;
+
+page 50306 "STI Agent/Broker Subpage"
+{
+    PageType = ListPart;
+    SourceTable = "STI Premium Agent/Broker Line";
+    Caption = 'Agents & Brokers';
+    ApplicationArea = All;
+    DelayedInsert = true;
+    AutoSplitKey = true;
+
+    layout
+    {
+        area(content)
+        {
+            repeater(Control1)
+            {
+                field("Agent/Broker Code"; Rec."Agent/Broker Code")
+                {
+                    ApplicationArea = All;
+                    ShowMandatory = true;
+                    ToolTip = 'Specifies the agent or broker code.';
+                }
+                field("Agent/Broker Name"; Rec."Agent/Broker Name")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the name of the agent or broker.';
+                }
+                field(Type; Rec.Type)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies whether this is an Agent or Broker.';
+                }
+                field("Commission %"; Rec."Commission %")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the commission percentage for this agent/broker.';
+                }
+                field("Commission Amount"; Rec."Commission Amount")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the commission amount calculated based on premium total.';
+                    Style = Strong;
+                    StyleExpr = TRUE;
+                }
+                field("CLAPi Agent ID"; Rec."CLAPi Agent ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the CLAPi system reference for this agent/broker.';
+                }
+            }
+        }
+    }
+
+    actions
+    {
+        area(Processing)
+        {
+            action(AgentBrokerCard)
+            {
+                Caption = 'Agent/Broker Card';
+                Image = PersonInCharge;
+                ApplicationArea = All;
+                ToolTip = 'Open the agent/broker card for the selected record.';
+
+                trigger OnAction()
+                var
+                    AgentBroker: Record "STI Agent/Broker Master";
+                begin
+                    if AgentBroker.Get(Rec."Agent/Broker Code") then
+                        Page.Run(Page::"STI Agent/Broker Card", AgentBroker)
+                    else
+                        Message('Agent/Broker %1 not found.', Rec."Agent/Broker Code");
+                end;
+            }
+        }
+    }
+
+    // trigger OnNewRecord(BelowxRec: Boolean)
+    // begin
+    //     Rec."Premium No." := GetFilter("Premium No.");
+    // end;
+}
