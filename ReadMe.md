@@ -168,7 +168,8 @@ For technical support or customization requests, please contact the development 
 
 ---
  ## File Structure
-
+ 
+```
  C:.
 ├───Codeunits
 ├───Enums
@@ -205,3 +206,5 @@ For technical support or customization requests, please contact the development 
         Tab-Ext50300.STIExtPurchPaySetable.al
         Tab-Ext50301.STIExtSalRecSetable.al
         Tab-Ext50302.STIExtVendors.al
+
+```
