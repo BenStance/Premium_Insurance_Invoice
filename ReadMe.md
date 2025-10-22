@@ -230,4 +230,4 @@ For technical support and implementation assistance:
 
 **Version**: 1.0.0   
 **Compatibility**: Business Central 2022 Wave 2 and later  
-**License**: Proprietary - Strategis Insurance && ACT
+**License**: Proprietary - Strategis Insurance && Athena Core TRechnologies
