@@ -1,6 +1,7 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
+using Microsoft.Purchases.Vendor;
 
-page 50306 "STI Agent/Broker Subpage"
+page 50009 "STI Agent/Broker Subpage"
 {
     PageType = ListPart;
     SourceTable = "STI Premium Agent/Broker Line";
@@ -43,11 +44,23 @@ page 50306 "STI Agent/Broker Subpage"
                     Style = Strong;
                     StyleExpr = TRUE;
                 }
-                field("CLAPi Agent ID"; Rec."CLAPi Agent ID")
+                field("Modified By"; Rec."Modified By")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the CLAPi system reference for this agent/broker.';
+                    ToolTip = 'Specifies the user who last modified the record.';
+                    Editable = false;
                 }
+                field("Modified Date"; Rec."Modified DateTime")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the date when the record was last modified.';
+                    Editable = false;
+                }
+                // field("CLAPi Agent ID"; Rec."CLAPi Agent ID")
+                // {
+                //     ApplicationArea = All;
+                //     ToolTip = 'Specifies the CLAPi system reference for this agent/broker.';
+                // }
             }
         }
     }
@@ -65,19 +78,14 @@ page 50306 "STI Agent/Broker Subpage"
 
                 trigger OnAction()
                 var
-                    AgentBroker: Record "STI Agent/Broker Master";
+                    AgentBroker: Record Vendor;
                 begin
                     if AgentBroker.Get(Rec."Agent/Broker Code") then
-                        Page.Run(Page::"STI Agent/Broker Card", AgentBroker)
+                        Page.Run(Page::"Vendor Card", AgentBroker)
                     else
                         Message('Agent/Broker %1 not found.', Rec."Agent/Broker Code");
                 end;
             }
         }
     }
-
-    // trigger OnNewRecord(BelowxRec: Boolean)
-    // begin
-    //     Rec."Premium No." := GetFilter("Premium No.");
-    // end;
 }

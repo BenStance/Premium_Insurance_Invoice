@@ -1,6 +1,6 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
 
-enum 50300 STIStatusenum
+enum 50013 STIStatusenum
 {
     Extensible = true;
     Caption = 'STI Status enum';

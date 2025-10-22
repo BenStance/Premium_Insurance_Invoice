@@ -1,7 +1,7 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
 using Microsoft.Sales.Customer;
 
-page 50308 "STI Premium Invoices List"
+page 50008 "STI Premium Invoices List"
 {
     PageType = List;
     SourceTable = "STI Premium Header";
@@ -30,11 +30,7 @@ page 50308 "STI Premium Invoices List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the posting date of the premium invoice.';
                 }
-                field(Status; Rec.Status)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the status of the premium invoice.';
-                }
+               
                 field("Customer No."; Rec."Customer No.")
                 {
                     ApplicationArea = All;
@@ -65,11 +61,7 @@ page 50308 "STI Premium Invoices List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the contract type.';
                 }
-                field("Channel Partner Code"; Rec."Channel Partner Code")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the channel partner code.';
-                }
+                
                 field("Reinsurance Type"; Rec."Reinsurance Type")
                 {
                     ApplicationArea = All;
@@ -80,11 +72,7 @@ page 50308 "STI Premium Invoices List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the CLAPi system reference number.';
                 }
-                field("Approval Status"; Rec."Approval Status")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the approval status.';
-                }
+                
                 field("Enforced"; Rec."Enforced")
                 {
                     ApplicationArea = All;
@@ -129,40 +117,6 @@ page 50308 "STI Premium Invoices List"
                 end;
             }
             
-            action(Release)
-            {
-                Caption = 'Release';
-                Image = ReleaseDoc;
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedCategory = Process;
-                ToolTip = 'Release the selected premium invoice.';
-
-                trigger OnAction()
-                begin
-                    // Release logic to be implemented
-                    if Confirm('Release premium invoice %1?', true, Rec."Premium No.") then
-                        Message('Premium Invoice %1 released.', Rec."Premium No.");
-                end;
-            }
-            
-            action(Post)
-            {
-                Caption = 'Post';
-                Image = Post;
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedCategory = Process;
-                PromotedIsBig = true;
-                ToolTip = 'Post the selected premium invoice.';
-
-                trigger OnAction()
-                begin
-                    // Posting logic to be implemented
-                    if Confirm('Post premium invoice %1?', true, Rec."Premium No.") then
-                        Message('Premium Invoice %1 posted.', Rec."Premium No.");
-                end;
-            }
             
             action(Print)
             {
@@ -175,7 +129,7 @@ page 50308 "STI Premium Invoices List"
 
                 trigger OnAction()
                 begin
-                    // Print logic to be implemented
+                    // Print logic to be implemented zitawekwa hapa
                     Message('Printing Premium Invoice %1.', Rec."Premium No.");
                 end;
             }
@@ -216,23 +170,7 @@ page 50308 "STI Premium Invoices List"
                 end;
             }
             
-            action(AgentBrokerCard)
-            {
-                Caption = 'Channel Partner Card';
-                Image = PersonInCharge;
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedCategory = Category4;
-                ToolTip = 'Open the channel partner card.';
-
-                trigger OnAction()
-                var
-                    AgentBroker: Record "STI Agent/Broker Master";
-                begin
-                    if AgentBroker.Get(Rec."Channel Partner Code") then
-                        Page.Run(Page::"STI Agent/Broker Card", AgentBroker);
-                end;
-            }
+           
         }
         
         area(Reporting)
@@ -248,17 +186,12 @@ page 50308 "STI Premium Invoices List"
 
                 trigger OnAction()
                 begin
-                    // Report logic to be implemented
+                    // when the Report logic Ikiwa tayari itawekwa hapa
                     Message('Generating Premium Invoice Report for %1.', Rec."Premium No.");
                 end;
             }
         }
     }
     
-    trigger OnOpenPage()
-    begin
-        // Set default sorting
-        Rec.SetCurrentKey("Posting Date", "Premium No.");
-        Rec.Ascending(false); // Show newest first
-    end;
+    
 }

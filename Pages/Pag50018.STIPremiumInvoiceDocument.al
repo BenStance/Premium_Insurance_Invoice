@@ -1,7 +1,9 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
 using Microsoft.Sales.Customer;
+using Microsoft.Purchases.Vendor;
 
-page 50304 "STI Premium Invoice Document"
+page 50018
+ "STI Premium Invoice Document"
 {
     PageType = Document;
     SourceTable = "STI Premium Header";
@@ -60,14 +62,6 @@ page 50304 "STI Premium Invoice Document"
                     Importance = Promoted;
                 }
                 field("Currency Code"; Rec."Currency Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Channel Partner Code"; Rec."Channel Partner Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Channel Partner %"; Rec."Channel Partner %")
                 {
                     ApplicationArea = All;
                 }
@@ -228,11 +222,10 @@ page 50304 "STI Premium Invoice Document"
 
             action(AgentBrokerCard)
             {
-                Caption = 'Channel Partner Card';
+                Caption = 'Channel Partner List';
                 Image = PersonInCharge;
                 ApplicationArea = All;
-                RunObject = Page "STI Agent/Broker Card";
-                RunPageLink = "Agent/Broker No." = field("Channel Partner Code");
+                RunObject = Page "Vendor List";
             }
         }
     }

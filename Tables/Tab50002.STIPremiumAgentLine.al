@@ -1,7 +1,7 @@
-table 50302 "STI Premium Agent/Broker Line"
+table 50002 "STI Premium Agent/Broker Line"
 {
     Caption = 'Premium Agent Line';
-    DataClassification = CustomerContent;
+    DataClassification = ToBeClassified;
 
     fields
     {
@@ -9,25 +9,25 @@ table 50302 "STI Premium Agent/Broker Line"
         {
             Caption = 'Premium No.';
             TableRelation = "STI Premium Header"."Premium No.";
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
             AutoIncrement = true;
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
 
         field(3; "Agent/Broker Code"; Code[20])
         {
             Caption = 'Agent/Broker Code';
-            TableRelation = "STI Agent/Broker Master"."Agent/Broker No.";
+            TableRelation = Vendor."No.";
             DataClassification = CustomerContent;
 
             trigger OnValidate()
             var
-                AgentRec: Record "STI Agent/Broker Master";
+                AgentRec: Record Vendor;
             begin
                 if AgentRec.Get("Agent/Broker Code") then begin
                     "Agent/Broker Name" := AgentRec.Name;
@@ -42,22 +42,22 @@ table 50302 "STI Premium Agent/Broker Line"
         {
             Caption = 'Agent/Broker Name';
             Editable = false;
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(5; Type; Option)
         {
             Caption = 'Type';
-            OptionMembers = Agent,Broker;
-            OptionCaption = 'Agent,Broker';
-            DataClassification = CustomerContent;
+            OptionMembers = Agent,Broker,Reinsurer;
+            OptionCaption = 'Agent,Broker,Reinsurer';
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
         field(6; "Commission %"; Decimal)
         {
             Caption = 'Commission (%)';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             MinValue = 0;
             MaxValue = 100;
 
@@ -71,47 +71,47 @@ table 50302 "STI Premium Agent/Broker Line"
         {
             Caption = 'Commission Amount';
             Editable = false;
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(8; "Created By"; Code[50])
         {
             Caption = 'Created By';
             Editable = false;
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
 
         field(9; "Created DateTime"; DateTime)
         {
             Caption = 'Created DateTime';
             Editable = false;
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
 
         field(10; "Modified By"; Code[50])
         {
             Caption = 'Modified By';
             Editable = false;
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
 
         field(11; "Modified DateTime"; DateTime)
         {
             Caption = 'Modified DateTime';
             Editable = false;
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
-        // Missing - CLAPi integration reference
-        field(12; "CLAPi Agent ID"; Code[30])
-        {
-            Caption = 'CLAPi Agent ID';
-            DataClassification = CustomerContent;
-        }
+        // Missing - CLAPi integration reference if necessary
+        // field(12; "CLAPi Agent ID"; Code[30])
+        // {
+        //     Caption = 'CLAPi Agent ID';
+        //     DataClassification = ToBeClassified;
+        // }
     }
 
     keys
     {
-        key(PK; "Premium No.", "Line No.")
+        key(PK; "Premium No.", "Line No.", "Agent/Broker Code")
         {
             Clustered = true;
         }

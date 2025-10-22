@@ -1,7 +1,6 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
-using Microsoft.Purchases.Vendor;
 
-page 50307 "STI Reinsurance Subpage"
+page 50017 "STI Reinsurance Subpage"
 {
     PageType = ListPart;
     SourceTable = "STI Premium Reinsurance Line";
@@ -61,71 +60,29 @@ page 50307 "STI Reinsurance Subpage"
                     Style = Strong;
                     StyleExpr = TRUE;
                 }
-                field("Vendor No."; Rec."Vendor No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the vendor account for payment processing.';
-                }
+                
                 field("CLAPi Partner ID"; Rec."CLAPi Partner ID")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the CLAPi system reference for this reinsurance partner.';
                 }
+                field("Modified By"; Rec."Modified By")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the user who last modified the record.';
+                    Editable = false;
+                }
+                field("Modified DateTime"; Rec."Modified DateTime")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the date and time when the record was last modified.';
+                    Editable = false;
+                }
             }
         }
     }
 
-    actions
-    {
-        area(Processing)
-        {
-            action(ReinsurancePartnerCard)
-            {
-                Caption = 'Reinsurance Partner Card';
-                Image = ContactPerson;
-                ApplicationArea = All;
-                ToolTip = 'Open the reinsurance partner card for the selected record.';
+   
 
-                trigger OnAction()
-                var
-                    ReinsPartner: Record "STI Reinsurance Partner Master";
-                begin
-                    if ReinsPartner.Get(Rec."Reinsurance Partner No.") then
-                        Page.Run(Page::"STI Reinsurance Partner Card", ReinsPartner)
-                    else
-                        Message('Reinsurance Partner %1 not found.', Rec."Reinsurance Partner No.");
-                end;
-            }
-
-            action(VendorCard)
-            {
-                Caption = 'Vendor Card';
-                Image = Vendor;
-                ApplicationArea = All;
-                ToolTip = 'Open the vendor card for payment processing.';
-
-                trigger OnAction()
-                var
-                    Vendor: Record Vendor;
-                begin
-                    if Vendor.Get(Rec."Vendor No.") then
-                        Page.Run(Page::"Vendor Card", Vendor)
-                    else
-                        Message('Vendor %1 not found.', Rec."Vendor No.");
-                end;
-            }
-        }
-    }
-
-    // trigger OnNewRecord(BelowxRec: Boolean)
-    // begin
-    //     Rec."Premium No." := GetFilter("Premium No.");
-    // end;
-
-    trigger OnAfterGetCurrRecord()
-    begin
-        // Recalculate amounts when record is refreshed
-        Rec.CalcParticipationAmount();
-        Rec.CalcCommissionAmount();
-    end;
+    
 }

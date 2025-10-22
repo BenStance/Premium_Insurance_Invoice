@@ -1,14 +1,14 @@
-table 50300 "STI Premium Header"
+table 50000 "STI Premium Header"
 {
     Caption = 'Premium Invoice Header';
-    DataClassification = CustomerContent;
+    DataClassification = ToBeClassified;
 
     fields
     {
         field(1; "Premium No."; Code[20])
         {
             Caption = 'No.';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
 
             trigger OnValidate()
@@ -24,19 +24,19 @@ table 50300 "STI Premium Header"
         field(2; "Posting Date"; Date)
         {
             Caption = 'Posting Date';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
-        // field(3; "Document Date"; Date)
-        // {
-        //     Caption = 'Document Date';
-        //     DataClassification = CustomerContent;
-        // }
+        field(3; "Document Date"; Date)
+        {
+            Caption = 'Document Date';
+            DataClassification = ToBeClassified;
+        }
 
         field(4; Status; Enum "STIStatusenum")
         {
             Caption = 'Status';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
@@ -44,7 +44,7 @@ table 50300 "STI Premium Header"
         {
             Caption = 'Customer No.';
             TableRelation = Customer."No.";
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(6; "Customer Name"; Text[100])
@@ -58,13 +58,13 @@ table 50300 "STI Premium Header"
         field(7; "Policy No."; Code[30])
         {
             Caption = 'Policy No.';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(8; "Premium Amount"; Decimal)
         {
             Caption = 'Total Premium';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
@@ -72,122 +72,92 @@ table 50300 "STI Premium Header"
         {
             Caption = 'Currency Code';
             TableRelation = Currency.Code;
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(10; "No. Series"; Code[20])
         {
             Caption = 'No. Series';
             Description = 'Numbering series for Premium Invoices';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
 
-        // field(11; "Description"; Text[250])
-        // {
-        //     Caption = 'Description';
-        //     DataClassification = CustomerContent;
-        // }
 
-        field(12; "CLAPi Ref. No."; Code[30])
+        field(11; "CLAPi Ref. No."; Code[30])
         {
             Caption = 'CLAPi Reference No.';
             Description = 'Unique reference received from CLAPi system';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
-        field(13; "Approval Status"; Option)
+        field(12; "Approval Status"; Option)
         {
             Caption = 'Approval Status';
             OptionMembers = Open,"Pending Approval",Approved,Rejected;
             OptionCaption = 'Open,Pending Approval,Approved,Rejected';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
-        field(14; "Created By"; Code[50])
+        field(13; "Created By"; Code[50])
         {
             Caption = 'Created By';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
-        field(15; "Created DateTime"; Date)
+        field(14; "Created DateTime"; Date)
         {
             Caption = 'Created DateTime';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
-        field(16; "Modified By"; Code[50])
+        field(15; "Modified By"; Code[50])
         {
             Caption = 'Modified By';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
-        field(17; "Modified DateTime"; Date)
+        field(16; "Modified DateTime"; Date)
         {
             Caption = 'Modified DateTime';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
-        field(18; "Posting Description"; Text[250])
+        field(17; "Posting Description"; Text[250])
         {
             Caption = 'Posting Description';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
-        field(19; "Reinsurance Type"; Option)
+        field(18; "Reinsurance Type"; Option)
         {
             Caption = 'Reinsurance Type';
-            OptionMembers = None,Treaty,Facultative;
+            OptionMembers = "",Treaty,Facultative;
             OptionCaption = 'None,Treaty,Facultative';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
-        // field(20; "Integration Status"; Option)
-        // {
-        //     Caption = 'Integration Status';
-        //     OptionMembers = "Not Sent","Pending","Sent","Error";
-        //     OptionCaption = 'Not Sent,Pending,Sent,Error';
-        //     DataClassification = CustomerContent;
-        //     Editable = false;
-        // }
-        // Missing from Meeting 01 - Underwriting Process
-        field(21; "Contract Type"; Code[20])
+        field(19; "Contract Type"; Code[20])
         {
             Caption = 'Contract Type';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
-
-        field(22; "Channel Partner Code"; Code[20])
-        {
-            Caption = 'Channel Partner Code';
-            TableRelation = "STI Agent/Broker Master"."Agent/Broker No.";
-            DataClassification = CustomerContent;
-        }
-
-        field(23; "Channel Partner %"; Decimal)
-        {
-            Caption = 'Channel Partner Commission %';
-            DataClassification = CustomerContent;
-            MinValue = 0;
-            MaxValue = 100;
-        }
-
         // Missing from Meeting 02 - Finance Integration
-        field(24; "Enforced"; Boolean)
+        field(20; "Enforced"; Boolean)
         {
             Caption = 'Enforced';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
-        field(25; "Invoice No."; Code[20])
+        field(21; "Invoice No."; Code[20])
         {
             Caption = 'Invoice No.';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
     }

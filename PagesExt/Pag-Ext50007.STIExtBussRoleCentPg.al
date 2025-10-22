@@ -2,11 +2,11 @@ namespace BCEXPERTROAD.BCEXPERTROAD;
 
 using Microsoft.Finance.RoleCenters;
 
-pageextension 50302 STIExtBussRoleCentPg extends "Business Manager Role Center"
+pageextension 50007 STIExtBussRoleCentPg extends "Business Manager Role Center"
 {
     actions
     {
-        addlast(Processing)
+        addlast(embedding)
         {
             action("CLAPi Invoices")
             {

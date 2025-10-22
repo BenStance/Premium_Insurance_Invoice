@@ -1,7 +1,7 @@
-table 50301 "STI Premium Line"
+table 50001 "STI Premium Line"
 {
     Caption = 'Premium Invoice Line';
-    DataClassification = CustomerContent;
+    DataClassification = ToBeClassified;
 
     fields
     {
@@ -9,25 +9,31 @@ table 50301 "STI Premium Line"
         {
             Caption = 'Premium No.';
             TableRelation = "STI Premium Header"."Premium No.";
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(2; "Line No."; Integer)
         {
             Caption = 'Line No.';
             AutoIncrement = true;
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
         }
 
+/* 
+    Here well get back after creating the insutance product mas
+    ter table to link to.
+    filds affected 3,4 and 5
+
+*/ 
         field(3; "Product Code"; Code[20])
         {
             Caption = 'Product Code';
-            TableRelation = Item."No.";
-            DataClassification = CustomerContent;
+            TableRelation = "STI Product Master"."Product Code";
+            DataClassification = ToBeClassified;
 
             trigger OnValidate()
             var
-                ItemRec: Record Item;
+                ItemRec: Record "STI Product Master";
             begin
                 if ItemRec.Get("Product Code") then begin
                     "Product Description" := ItemRec.Description;
@@ -39,14 +45,12 @@ table 50301 "STI Premium Line"
         field(4; "Product Description"; Text[100])
         {
             Caption = 'Description';
-            // FieldClass = FlowField;
-            // CalcFormula = lookup(Item.Description where("No." = field("Product Code")));
             Editable = false;
         }
         field(5; "Unit Price"; Decimal)
         {
             Caption = 'Unit Price';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
 
             trigger OnValidate()
             begin
@@ -56,7 +60,7 @@ table 50301 "STI Premium Line"
         field(6; Quantity; Decimal)
         {
             Caption = 'Quantity';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
 
             trigger OnValidate()
             begin
@@ -68,47 +72,47 @@ table 50301 "STI Premium Line"
         {
             Caption = 'Line Amount';
             Editable = false;
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(8; "Created By"; Code[50])
         {
             Caption = 'Created By';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
         field(9; "Created DateTime"; DateTime)
         {
             Caption = 'Created DateTime';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
         field(10; "Modified By"; Code[50])
         {
             Caption = 'Modified By';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
 
         field(11; "Modified DateTime"; DateTime)
         {
             Caption = 'Modified DateTime';
-            DataClassification = SystemMetadata;
+            DataClassification = ToBeClassified;
             Editable = false;
         }
         // Missing from Meeting 01 - Product effective dates
         field(12; "Effective Date"; Date)
         {
             Caption = 'Effective Date';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
 
         field(13; "Expiry Date"; Date)
         {
             Caption = 'Expiry Date';
-            DataClassification = CustomerContent;
+            DataClassification = ToBeClassified;
         }
     }
 

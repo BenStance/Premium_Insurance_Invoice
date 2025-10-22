@@ -1,7 +1,7 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
 using Microsoft.Inventory.Item;
 
-page 50305 "STI Premium Lines Subpage"
+page 50010 "STI Premium Lines Subpage"
 {
     PageType = ListPart;
     SourceTable = "STI Premium Line";
@@ -53,6 +53,18 @@ page 50305 "STI Premium Lines Subpage"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the expiry date for this product.';
+                }
+                field("Modified By"; Rec."Modified By")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the user who last modified the record.';
+                    Editable = false;
+                }
+                field("Modified DateTime"; Rec."Modified DateTime")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the date and time when the record was last modified.';
+                    Editable = false;
                 }
             }
         }

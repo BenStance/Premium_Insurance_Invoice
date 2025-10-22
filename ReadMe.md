@@ -1,210 +1,233 @@
 # Strategis Insurance - Business Central Integration
 
-## Project Overview
+A comprehensive insurance management system integrating CLAPi insurance platform with Microsoft Dynamics 365 Business Central for end-to-end insurance workflow management.
 
-This AL project implements a comprehensive insurance management system for Strategis Insurance, integrating their existing CLAPi system with Microsoft Dynamics 365 Business Central. The solution covers the complete insurance workflow from underwriting to claims management and reinsurance.
+## 📋 Project Overview
 
-## Business Context
+This AL solution implements a complete insurance management system for Strategis Insurance, designed to seamlessly integrate their existing CLAPi insurance platform with Microsoft Dynamics 365 Business Central. The system covers the entire insurance workflow from policy underwriting and premium invoicing to reinsurance management and financial integration.
 
-Based on extensive requirements gathering sessions with Strategis Insurance, this project addresses their need to streamline operations by integrating CLAPi (their core insurance system) with Business Central for financial management and reporting.
+## 🚀 Key Features
 
-### Key Meeting Insights
-- **Meeting 01**: Underwriting process understanding and CLAPi system workflow
-- **Meeting 02**: Claims management process and financial integration
-- **Meeting 03**: Reinsurance module integration and financial mapping
-- **Meeting 04**: Business Central deployment options review
-- **Meeting 05**: Chart of Accounts categorization and financial structure
-- **Meeting 06**: Final integration architecture and subledger design
+- **📝 Premium Invoice Management**: Complete premium invoice processing with multi-level line items
+- **📦 Insurance Product Master**: Centralized product catalog with GL account mapping
+- **🤝 Agent & Broker Management**: Comprehensive commission tracking and partner management
+- **🔄 Reinsurance Integration**: Treaty and facultative reinsurance with partner participation tracking
+- **💳 Financial Integration**: Seamless integration with Business Central financial modules
+- **🔗 CLAPi System Sync**: Real-time synchronization with CLAPi insurance platform
+- **📊 Multi-dimensional Tracking**: Full dimension support for financial reporting
+- **✅ Approval Workflows**: Integrated approval processes for premium invoices
+- **🏦 Bank Reconciliation**: Automated bank account integration and reconciliation
 
-## Solution Architecture
+## 🏗️ Solution Architecture
 
-### Core Tables
+### AL Objects Structure
 
-#### 1. Premium Management
-- **Tab50300.STIPremiumInvoHeader.al** - Premium invoice header table
-- **Tab50301.STIPremiumInvLine.al** - Premium product lines table
-- **Tab50304.STIPremiumAgentLine.al** - Agent/Broker commission lines
+```
+📦 Strategies_Insurance
+│   ReadMe.md
+│
+├───Enums/
+│   ├── Enum50012.STIProductTypeEnum.al
+│   └── Enum50013.STIStatusenum.al
+│
+├───Pages/
+│   ├── Pag50008.STIPremiumInvoicesList.al
+│   ├── Pag50009.STIPremiumAgentBrokerSubpa.al
+│   ├── Pag50010.STIPremiumLinesSubpage.al
+│   ├── Pag50013.STIProductList.al
+│   ├── Pag50016.STIProductCard.al
+│   ├── Pag50017.STIReinsuranceSubpage.al
+│   └── Pag50018.STIPremiumInvoiceDocument.al
+│
+├───PagesExt/
+│   ├── Pag-Ext50006.STIExtPuchPayablePg.al
+│   ├── Pag-Ext50007.STIExtBussRoleCentPg.al
+│   └── Pag-Ext50015.STIExtInventorySetupPg.al
+│
+├───Tables/
+│   ├── Tab50000.STIPremiumInvoHeader.al
+│   ├── Tab50001.STIPremiumInvLine.al
+│   ├── Tab50002.STIPremiumAgentLine.al
+│   ├── Tab50003.STIPremiumReinsinurance.al
+│   └── Tab50011.STIProductMaster.al
+│
+└───TablesExt/
+    ├── Tab-Ext50004.STIExtVendors.al
+    ├── Tab-Ext50005.STIExtPurchPaySetable.al
+    └── Tab-Ext50014.STIInventoryExt.al
+```
 
-#### 2. Partner Management
-- **Tab50303.STIAgentBrokerMaster.al** - Agent and Broker master data
-- **Tab50305.STIReinsurancePartnerMaster.al** - Reinsurance partner master data
-- **Tab50306.STIPremiumReinsinurance.al** - Reinsurance participation lines
+### Core Components
 
-### User Interface Pages
+#### Tables
+- **STI Premium Invoice Header**: Main premium invoice document management
+- **STI Premium Invoice Line**: Insurance product line items for premiums
+- **STI Premium Agent Line**: Agent and broker commission tracking
+- **STI Premium Reinsurance**: Reinsurance partner participation management
+- **STI Product Master**: Central insurance product catalog
 
-#### Master Data Management
-- **Pag50300.STIAgentBrokerCard.al** - Agent/Broker master card
-- **Pag50301.STIAgentBrokerList.al** - Agent/Broker list page
-- **Pag50302.STIReinsurancePartnersList.al** - Reinsurance partners list
-- **Pag50303.STIReinsurancePartnerCard.al** - Reinsurance partner card
+#### Pages
+- **Premium Invoice Document**: Comprehensive document page with subpages
+- **Product Master**: Insurance product configuration and management
+- **List Pages**: Overview pages for invoices and products
+- **Subpages**: Line management for products, agents, and reinsurance
 
-#### Premium Invoice Management
-- **Pag50304.STIPremiumInvoiceDocument.al** - Premium invoice document page
-- **Pag50305.STIPremiumLinesSubpage.al** - Product lines subpage
-- **Pag50306.STIPremiumAgentBrokerSubpa.al** - Agent/Broker lines subpage
-- **Pag50307.STIReinsuranceSubpage.al** - Reinsurance lines subpage
-- **Pag50308.STIPremiumInvoicesList.al** - Premium invoices list
+#### Extensions
+- **Setup Extensions**: Custom configuration for insurance operations
+- **Vendor Extensions**: Enhanced vendor management for insurance partners
+- **Role Center**: Customized user interface for insurance operations
 
-### Integration Extensions
+## 🛠️ Installation & Setup
 
-#### Setup Extensions
-- **Tab-Ext50300.STIExtPurchPaySetable.al** - Purchases & Payables Setup extension
-- **Tab-Ext50301.STIExtSalRecSetable.al** - Sales & Receivables Setup extension
-- **Tab-Ext50302.STIExtVendors.al** - Vendor table extension
+### Prerequisites
+- Microsoft Dynamics 365 Business Central (On-premises or SaaS)
+- Visual Studio Code with AL Language extension
+- Git version control system
 
-#### Page Extensions
-- **Pag-Ext50300.STIExtPuchPayablePg.al** - Purchases & Payables Setup page extension
-- **Pag-Ext50301.STIExtSalRecPg.al** - Sales & Receivables Setup page extension
-- **Pag-Ext50302.STIExtBussRoleCentPg.al** - Business Role Center page extension
+### Installation Steps
 
-### Enums
-- **Enum50300.STIStatusenum.al** - Status enumeration for premium invoices
+1. **Clone the Repository**
+   ```bash
+   https://github.com/BenStance/Premium_Insurance_Invoice.git
+   cd strategis-insurance
+   ```
 
-## Key Features
+2. **Open in Visual Studio Code**
+   ```bash
+   code .
+   ```
 
-### 1. Complete Underwriting Workflow
-- Corporate client creation with KYC details
-- Application (Quote) initiation from proposals
-- Contract type assignment
-- Channel partner commission management
-- Product creation and rate setup
-- Member list upload and verification
-- Application approval process
+3. **Build and Publish**
+   - Configure your `launch.json` with Business Central environment details
+   - Build the project (Ctrl+Shift+B)
+   - Publish the extension to your Business Central environment
 
-### 2. Financial Integration
-- Invoice generation against approved applications
-- Tally system integration for financial recording
-- Receipt creation and premium enforcement
-- Automated bank reconciliation
-- Subledger management for stakeholders
+### Configuration
 
-### 3. Reinsurance Management
-- Treaty and facultative reinsurance support
-- Proportional and non-proportional treaty types
-- Multiple reinsurer participation
-- Commission and participation calculations
-- Catastrophe management setup
+1. **Number Series Setup**
+   - Navigate to: **Inventory Setup**
+   - Configure "STI Product No." number series
 
-### 4. Claims Integration
-- Multi-channel claims submission (physical, portal, email)
-- Batch claims processing
-- Provider payment remittance
-- Guarantee of Payment (GOP) handling
-- Debit note issuance
+2. **GL Account Mapping**
+   - Set up appropriate GL accounts for insurance products
+   - Configure premium, commission, and claims accounts
 
-## Technical Specifications
+3. **User Permissions**
+   - Assign appropriate permissions for insurance operations
+   - Configure approval workflows
 
-### Number Series
-- STI Premium Invoice Numbers
-- STI Agent/Broker Numbers  
-- STI Reinsurance Partner Numbers
+## 📖 Usage Guide
 
-### Status Management
-- Open, Pending Approval, Approved, Rejected statuses
-- Integration status tracking
-- Enforcement status for financial posting
+### Managing Insurance Products
+
+1. **Create New Product**
+   - Navigate to "Insurance Products" list
+   - Click "New Product" to create insurance product
+   - Configure product type, GL accounts, and pricing
+
+2. **Product Configuration**
+   - Set premium rates and insurance limits
+   - Configure commission rates
+   - Define reinsurance requirements
+   - Map GL accounts for financial posting
+
+### Premium Invoice Processing
+
+1. **Create Premium Invoice**
+   - Open "Premium Invoices" list
+   - Create new invoice with customer and policy details
+   - Add insurance products with calculated premiums
+
+2. **Manage Commissions**
+   - Add agents and brokers with commission percentages
+   - System automatically calculates commission amounts
+   - Track multiple channel partners per invoice
+
+3. **Reinsurance Allocation**
+   - Assign reinsurance partners with participation percentages
+   - System calculates participation amounts automatically
+   - Track treaty and facultative reinsurance
+
+### Financial Integration
+
+1. **GL Account Posting**
+   - Premiums posted to configured GL accounts
+   - Commissions posted to expense accounts
+   - Reinsurance transactions properly accounted
+
+2. **Vendor Management**
+   - Agents, brokers, and reinsurers linked to vendor accounts
+   - Automated payment processing
+   - Bank reconciliation support
+
+## 🎯 Business Benefits
+
+- **Streamlined Operations**: Automated insurance workflow management
+- **Financial Control**: Integrated GL account mapping and posting
+- **Partner Management**: Comprehensive agent, broker, and reinsurer tracking
+- **Risk Management**: Proper reinsurance allocation and tracking
+- **Regulatory Compliance**: Complete audit trail and documentation
+
+## 🔧 Technical Specifications
 
 ### Integration Points
 - CLAPi reference mapping for all entities
 - Vendor linkage for payment processing
 - Bank account integration for reconciliation
-- Currency and multi-company support
+- Multi-company and multi-currency support
 
-## Setup Instructions
+### Security Features
+- Role-based access control
+- Audit trail tracking
+- Data classification and protection
+- Approval workflow integration
 
-### 1. Number Series Configuration
-Add the following number series to your setup:
-- STI Premium Invoice Nos.
-- STI Agent/Broker Nos.
-- STI Reinsurance Partner Nos.
+## 🐛 Troubleshooting
 
-### 2. Page Customization
-The solution extends standard Business Central pages:
-- Purchases & Payables Setup
-- Sales & Receivables Setup  
-- Business Role Center
-- Vendor table
+### Common Issues
 
-### 3. Integration Setup
-Configure CLAPi integration parameters:
-- API endpoints
-- Authentication credentials
-- Data mapping rules
+1. **Number Series Configuration**
+   - Ensure "STI Product No." is configured in Inventory Setup
+   - Verify number series has available numbers
 
-## API Integration
+2. **GL Account Mapping**
+   - Confirm GL accounts exist and are properly configured
+   - Check account posting groups
 
-The solution supports REST API integration with CLAPi system using OData web services:
-- Premium invoice creation and updates
-- Real-time data synchronization
-- Batch processing support
-- Comprehensive error logging
+3. **Vendor Integration**
+   - Verify vendor records exist for partners
+   - Check vendor posting setup
 
-## Business Benefits
+### Support Resources
 
-1. **Streamlined Operations**: Automated data flow between CLAPi and Business Central
-2. **Improved Financial Control**: Real-time financial integration and reporting
-3. **Enhanced Partner Management**: Comprehensive agent, broker, and reinsurer tracking
-4. **Better Decision Making**: Integrated data for underwriting and claims analysis
-5. **Regulatory Compliance**: Complete audit trail and documentation
+- Check Business Central event log for errors
+- Verify user permissions and roles
+- Review integration log for CLAPi synchronization issues
 
-## Development Standards
+## 📞 Support
 
-- AL best practices compliance
-- Comprehensive error handling
-- Multi-language support ready
-- Performance optimized queries
-- Security role integration
+For technical support and implementation assistance:
 
-## Future Enhancements
+- **Development Team**: Athena Core Technologies
+- **Contact**: Benedict ACT
+- **Phone**: 0622472600
+- **Email**: benedict@act-ltd.com
 
-1. Advanced reporting and analytics
-2. AI-powered risk assessment
-3. Blockchain integration for reinsurance
-4. Predictive analytics for claims
+## 🙏 Acknowledgments
 
-## Support and Maintenance
+### Development Team
+- **Athena Core Technologies** - Solution architecture and development
+- **Ramesh G** - Lead developer and project coordination
+- **Strategis Insurance Team** - Business requirements and testing
 
-For technical support or customization requests, please contact the development team or refer to the technical documentation.
+### Special Thanks
+- Microsoft Dynamics 365 Business Central team
+- AL developer community contributors
+- Insurance industry experts for domain guidance
+- Quality assurance and testing team
 
 ---
- ## File Structure
- 
-```
- C:.
-├───Codeunits
-├───Enums
-│       Enum50300.STIStatusenum.al
-│
-├───Layouts
-├───Pages
-│       Pag50300.STIAgentBrokerCard.al
-│       Pag50301.STIAgentBrokerList.al
-│       Pag50302.STIReinsurancePartnersList.al
-│       Pag50303.STIReinsurancePartnerCard.al
-│       Pag50304.STIPremiumInvoiceDocument.al
-│       Pag50305.STIPremiumLinesSubpage.al
-│       Pag50306.STIPremiumAgentBrokerSubpa.al
-│       Pag50307.STIReinsuranceSubpage.al
-│       Pag50308.STIPremiumInvoicesList.al
-│
-├───PagesExt
-│       Pag-Ext50300.STIExtPuchPayablePg.al
-│       Pag-Ext50301.STIExtSalRecPg.al
-│       Pag-Ext50302.STIExtBussRoleCentPg.al
-│
-├───Reports
-├───ReportsExt
-├───Tables
-│       Tab50300.STIPremiumInvoHeader.al
-│       Tab50301.STIPremiumInvLine.al
-│       Tab50303.STIAgentBrokerMaster.al
-│       Tab50304.STIPremiumAgentLine.al
-│       Tab50305.STIReinsurancePartnerMaster.al
-│       Tab50306.STIPremiumReinsinurance.al
-│
-└───TablesExt
-        Tab-Ext50300.STIExtPurchPaySetable.al
-        Tab-Ext50301.STIExtSalRecSetable.al
-        Tab-Ext50302.STIExtVendors.al
 
-```
+**Version**: 1.0.0   
+**Compatibility**: Business Central 2022 Wave 2 and later  
+**License**: Proprietary - Strategis Insurance && ACT
