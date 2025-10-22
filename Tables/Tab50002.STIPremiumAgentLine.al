@@ -111,7 +111,7 @@ table 50002 "STI Premium Agent/Broker Line"
 
     keys
     {
-        key(PK; "Premium No.", "Line No.", "Agent/Broker Code")
+        key(PK; "Premium No.", "Line No.")
         {
             Clustered = true;
         }

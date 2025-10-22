@@ -95,6 +95,11 @@ page 50016 "STI Product Card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the default premium rate for this product.';
                 }
+                field("Unit Price";Rec."Unit Price")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the unit price for the insurance product.';
+                }
                 field("Minimum Premium"; Rec."Minimum Premium")
                 {
                     ApplicationArea = All;

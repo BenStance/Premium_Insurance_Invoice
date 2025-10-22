@@ -11,7 +11,7 @@ pageextension 50007 STIExtBussRoleCentPg extends "Business Manager Role Center"
             action("CLAPi Invoices")
             {
                 ApplicationArea = All;
-                Caption = 'RDP Requests';
+                Caption = 'CLAPi Invoices';
                 RunObject = Page "STI Premium Invoices List";
                 ToolTip = 'View and manage CLAPi Invoices.';
             }

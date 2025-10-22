@@ -7,7 +7,14 @@ tableextension 50004 STIExtVendors extends Vendor
 {
     fields
 
-    {
+    {   
+        field(50000; "Treaty Type"; Option)
+        {
+            Caption = 'Treaty Type';
+            OptionMembers = " ","Proportional","Non-Proportional";
+            OptionCaption = ' ,Proportional,Non-Proportional';
+            DataClassification = ToBeClassified;
+        }
         field(50001; "Bank No."; Code[20])
         {
             Caption = 'Bank Account No.';
@@ -57,12 +64,6 @@ tableextension 50004 STIExtVendors extends Vendor
             DataClassification = ToBeClassified;
         }
 
-        field(50007; "Treaty Type"; Option)
-        {
-            Caption = 'Treaty Type';
-            OptionMembers = " ","Proportional","Non-Proportional";
-            OptionCaption = ' ,Proportional,Non-Proportional';
-            DataClassification = ToBeClassified;
-        }
+        
     }
 }

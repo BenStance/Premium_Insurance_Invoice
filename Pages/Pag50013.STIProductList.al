@@ -49,15 +49,10 @@ page 50013 "STI Product List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the default premium rate for this product.';
                 }
-                field("Minimum Premium"; Rec."Minimum Premium")
+                field("Unit Price";Rec."Unit Price")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the minimum premium amount for this product.';
-                }
-                field("Maximum Sum Insured"; Rec."Maximum Sum Insured")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the maximum sum insured for this product.';
+                    ToolTip = 'Specifies the unit price for the insurance product.';
                 }
                 field("Policy Term"; Rec."Policy Term")
                 {
@@ -102,21 +97,7 @@ page 50013 "STI Product List"
     {
         area(Processing)
         {
-            action(NewProduct)
-            {
-                Caption = 'New Product';
-                Image = New;
-                ApplicationArea = All;
-                Promoted = true;
-                PromotedCategory = New;
-                PromotedIsBig = true;
-                ToolTip = 'Create a new insurance product.';
-
-                trigger OnAction()
-                begin
-                    Page.Run(Page::"STI Product Card");
-                end;
-            }
+           
             
             action(RefreshProducts)
             {

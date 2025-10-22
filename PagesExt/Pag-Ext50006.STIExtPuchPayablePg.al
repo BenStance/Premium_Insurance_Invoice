@@ -18,4 +18,5 @@ pageextension 50006 STIExtPuchPayablePg extends "Purchases & Payables Setup"
             }             
         }
     }
+    
 }

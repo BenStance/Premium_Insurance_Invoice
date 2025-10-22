@@ -102,11 +102,11 @@ table 50000 "STI Premium Header"
         field(13; "Created By"; Code[50])
         {
             Caption = 'Created By';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
             Editable = false;
         }
 
-        field(14; "Created DateTime"; Date)
+        field(14; "Created DateTime"; DateTime)
         {
             Caption = 'Created DateTime';
             DataClassification = ToBeClassified;
@@ -116,11 +116,11 @@ table 50000 "STI Premium Header"
         field(15; "Modified By"; Code[50])
         {
             Caption = 'Modified By';
-            DataClassification = ToBeClassified;
+            DataClassification = CustomerContent;
             Editable = false;
         }
 
-        field(16; "Modified DateTime"; Date)
+        field(16; "Modified DateTime"; DateTime)
         {
             Caption = 'Modified DateTime';
             DataClassification = ToBeClassified;
@@ -183,12 +183,16 @@ table 50000 "STI Premium Header"
             PurchasesPayablesSetup.TestField("STI");
             "No. Series" := PurchasesPayablesSetup."STI";
             "Premium No." := NoSeriesMgt.GetNextNo("No. Series", Today(), true);
-            "Created DateTime" := Today();
+            "Created DateTime" := CurrentDateTime();
+            "Modified DateTime" := "Created DateTime";
             Status := Status::Open;
         end;
 
-        if userSetup.Get(UserId()) then
+        if userSetup.Get(UserId())  then begin
             "Created By" := userSetup."User ID";
+        end;
+        
+
 
 
     end;
@@ -222,9 +226,9 @@ table 50000 "STI Premium Header"
         end;
 
         if userSetup.Get(UserId()) then begin
-            "Modified By" := userSetup."User ID";
-            "Modified DateTime" := Today();
+            "Modified By" := userSetup."User ID";    
         end;
+        "Modified DateTime" := CurrentDateTime();
     end;
 
 }
