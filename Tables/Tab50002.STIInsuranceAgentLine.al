@@ -1,6 +1,6 @@
-table 50002 "STI Premium Agent/Broker Line"
+table 50002 "STI Insurance Agent Line"
 {
-    Caption = 'Premium Agent Line';
+    Caption = 'Insurance Agent Line';
     DataClassification = ToBeClassified;
 
     fields
@@ -8,7 +8,7 @@ table 50002 "STI Premium Agent/Broker Line"
         field(1; "Premium No."; Code[20])
         {
             Caption = 'Premium No.';
-            TableRelation = "STI Premium Header"."Premium No.";
+            TableRelation = "STI Insurance Header"."Premium No.";
             DataClassification = ToBeClassified;
         }
 
@@ -145,7 +145,7 @@ table 50002 "STI Premium Agent/Broker Line"
 
     local procedure CalcCommissionAmount()
     var
-        PremiumHeader: Record "STI Premium Header";
+        PremiumHeader: Record "STI Insurance Header";
     begin
         if PremiumHeader.Get("Premium No.") then
             "Commission Amount" := Round(PremiumHeader."Premium Amount" * ("Commission %" / 100), 0.01);

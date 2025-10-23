@@ -1,6 +1,6 @@
-table 50000 "STI Premium Header"
+table 50000 "STI Insurance Header"
 {
-    Caption = 'Premium Invoice Header';
+    Caption = 'Insurance Invoice Header';
     DataClassification = ToBeClassified;
 
     fields

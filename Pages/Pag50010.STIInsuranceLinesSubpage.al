@@ -1,11 +1,11 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
 using Microsoft.Inventory.Item;
 
-page 50010 "STI Premium Lines Subpage"
+page 50010 "STI Insurance Lines Subpage"
 {
     PageType = ListPart;
-    SourceTable = "STI Premium Line";
-    Caption = 'Premium Products';
+    SourceTable = "STI Insurance Line";
+    Caption = 'Insurance Products';
     ApplicationArea = All;
     DelayedInsert = true;
     AutoSplitKey = true;

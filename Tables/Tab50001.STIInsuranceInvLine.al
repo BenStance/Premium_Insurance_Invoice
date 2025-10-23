@@ -1,6 +1,6 @@
-table 50001 "STI Premium Line"
+table 50001 "STI Insurance Line"
 {
-    Caption = 'Premium Invoice Line';
+    Caption = 'Insurance Invoice Line';
     DataClassification = ToBeClassified;
 
     fields
@@ -8,7 +8,7 @@ table 50001 "STI Premium Line"
         field(1; "Premium Line No."; Code[20])
         {
             Caption = 'Premium No.';
-            TableRelation = "STI Premium Header"."Premium No.";
+            TableRelation = "STI Insurance Header"."Premium No.";
             DataClassification = ToBeClassified;
         }
 
@@ -126,7 +126,7 @@ table 50001 "STI Premium Line"
 
     trigger OnInsert()
     var
-        Header: Record "STI Premium Header";
+        Header: Record "STI Insurance Header";
         UserSetup: Record "User Setup";
     begin
         if UserSetup.Get(UserId()) then
@@ -143,7 +143,7 @@ table 50001 "STI Premium Line"
 
     trigger OnModify()
     var
-        Header: Record "STI Premium Header";
+        Header: Record "STI Insurance Header";
         UserSetup: Record "User Setup";
     begin
         if UserSetup.Get(UserId()) then
@@ -156,7 +156,7 @@ table 50001 "STI Premium Line"
 
     trigger OnDelete()
     var
-        Header: Record "STI Premium Header";
+        Header: Record "STI Insurance Header";
     begin
         if Header.Get("Premium Line No.") then
             UpdateHeaderTotal(Header);
@@ -167,9 +167,9 @@ table 50001 "STI Premium Line"
         "Line Amount" := Round(Quantity * "Unit Price", 0.01);
     end;
 
-    local procedure UpdateHeaderTotal(var Header: Record "STI Premium Header")
+    local procedure UpdateHeaderTotal(var Header: Record "STI Insurance Header")
     var
-        LineRec: Record "STI Premium Line";
+        LineRec: Record "STI Insurance Line";
         TotalAmt: Decimal;
     begin
         TotalAmt := 0;

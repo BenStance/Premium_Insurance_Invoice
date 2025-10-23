@@ -12,7 +12,7 @@ pageextension 50007 STIExtBussRoleCentPg extends "Business Manager Role Center"
             {
                 ApplicationArea = All;
                 Caption = 'CLAPi Invoices';
-                RunObject = Page "STI Premium Invoices List";
+                RunObject = Page "STI Insurance Invoices List";
                 ToolTip = 'View and manage CLAPi Invoices.';
             }
         }

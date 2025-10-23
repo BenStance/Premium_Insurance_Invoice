@@ -31,13 +31,13 @@ This AL solution implements a complete insurance management system for Strategis
 │   └── Enum50013.STIStatusenum.al
 │
 ├───Pages/
-│   ├── Pag50008.STIPremiumInvoicesList.al
-│   ├── Pag50009.STIPremiumAgentBrokerSubpa.al
-│   ├── Pag50010.STIPremiumLinesSubpage.al
+│   ├── Pag50008.STIInsuranceInvoicesList.al
+│   ├── Pag50009.STIInsuranceAgentBrokerSubpa.al
+│   ├── Pag50010.STIInsuranceLinesSubpage.al
 │   ├── Pag50013.STIProductList.al
 │   ├── Pag50016.STIProductCard.al
 │   ├── Pag50017.STIReinsuranceSubpage.al
-│   └── Pag50018.STIPremiumInvoiceDocument.al
+│   └── Pag50018.STIInsuranceInvoiceDocument.al
 │
 ├───PagesExt/
 │   ├── Pag-Ext50006.STIExtPuchPayablePg.al
@@ -45,10 +45,10 @@ This AL solution implements a complete insurance management system for Strategis
 │   └── Pag-Ext50015.STIExtInventorySetupPg.al
 │
 ├───Tables/
-│   ├── Tab50000.STIPremiumInvoHeader.al
-│   ├── Tab50001.STIPremiumInvLine.al
-│   ├── Tab50002.STIPremiumAgentLine.al
-│   ├── Tab50003.STIPremiumReinsinurance.al
+│   ├── Tab50000.STIInsuranceInvoHeader.al
+│   ├── Tab50001.STIInsuranceInvLine.al
+│   ├── Tab50002.STIInsuranceAgentLine.al
+│   ├── Tab50003.STIInsuranceReinsinurance.al
 │   └── Tab50011.STIProductMaster.al
 │
 └───TablesExt/
@@ -60,14 +60,14 @@ This AL solution implements a complete insurance management system for Strategis
 ### Core Components
 
 #### Tables
-- **STI Premium Invoice Header**: Main premium invoice document management
-- **STI Premium Invoice Line**: Insurance product line items for premiums
-- **STI Premium Agent Line**: Agent and broker commission tracking
-- **STI Premium Reinsurance**: Reinsurance partner participation management
+- **STI Insurance Invoice Header**: Main Insurance invoice document management
+- **STI Insurance Invoice Line**: Insurance product line items for premiums
+- **STI Insurance Agent Line**: Agent and broker commission tracking
+- **STI Insurance Reinsurance**: Reinsurance partner participation management
 - **STI Product Master**: Central insurance product catalog
 
 #### Pages
-- **Premium Invoice Document**: Comprehensive document page with subpages
+- **Insurance Invoice Document**: Comprehensive document page with subpages
 - **Product Master**: Insurance product configuration and management
 - **List Pages**: Overview pages for invoices and products
 - **Subpages**: Line management for products, agents, and reinsurance

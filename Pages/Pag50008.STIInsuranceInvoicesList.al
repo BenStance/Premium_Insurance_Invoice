@@ -1,14 +1,14 @@
 namespace BCEXPERTROAD.BCEXPERTROAD;
 using Microsoft.Sales.Customer;
 
-page 50008 "STI Premium Invoices List"
+page 50008 "STI Insurance Invoices List"
 {
     PageType = List;
-    SourceTable = "STI Premium Header";
-    Caption = 'Premium Invoices';
+    SourceTable = "STI Insurance Header";
+    Caption = 'Insurance Invoices';
     UsageCategory = Lists;
     ApplicationArea = All;
-    CardPageId = "STI Premium Invoice Document";
+    CardPageId = "STI Insurance Invoice Document";
     Editable = false;
 
     PromotedActionCategories = 'New,Process,Report,Navigation,Category5,Category6,Category7,Category8,Category9,Category10';
@@ -113,7 +113,7 @@ page 50008 "STI Premium Invoices List"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"STI Premium Invoice Document");
+                    Page.Run(Page::"STI Insurance Invoice Document");
                 end;
             }
             
@@ -148,7 +148,7 @@ page 50008 "STI Premium Invoices List"
 
                 trigger OnAction()
                 begin
-                    Page.Run(Page::"STI Premium Invoice Document", Rec);
+                    Page.Run(Page::"STI Insurance Invoice Document", Rec);
                 end;
             }
             

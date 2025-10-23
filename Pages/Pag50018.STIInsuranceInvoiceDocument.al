@@ -3,10 +3,10 @@ using Microsoft.Sales.Customer;
 using Microsoft.Purchases.Vendor;
 
 page 50018
- "STI Premium Invoice Document"
+ "STI Insurance Invoice Document"
 {
     PageType = Document;
-    SourceTable = "STI Premium Header";
+    SourceTable = "STI Insurance Header";
     Caption = 'Premium Invoice';
     UsageCategory = Documents;
     ApplicationArea = All;
@@ -96,7 +96,7 @@ page 50018
                 }
             }
 
-            part(PremiumLines; "STI Premium Lines Subpage")
+            part(PremiumLines; "STI Insurance Lines Subpage")
             {
                 Caption = 'Premium Products';
                 SubPageLink = "Premium Line No." = field("Premium No.");

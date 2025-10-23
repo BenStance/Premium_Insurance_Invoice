@@ -4,7 +4,7 @@ using Microsoft.Purchases.Vendor;
 page 50009 "STI Agent/Broker Subpage"
 {
     PageType = ListPart;
-    SourceTable = "STI Premium Agent/Broker Line";
+    SourceTable = "STI Insurance Agent Line";
     Caption = 'Agents & Brokers';
     ApplicationArea = All;
     DelayedInsert = true;

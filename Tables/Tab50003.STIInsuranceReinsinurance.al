@@ -1,6 +1,6 @@
-table 50003 "STI Premium Reinsurance Line"
+table 50003 "STI Insurance Reinsurance Line"
 {
-    Caption = 'Premium Reinsurance Line';
+    Caption = 'Insurance Reinsurance Line';
     DataClassification = ToBeClassified;
 
     fields
@@ -8,7 +8,7 @@ table 50003 "STI Premium Reinsurance Line"
         field(1; "Premium No."; Code[20])
         {
             Caption = 'Premium No.';
-            TableRelation = "STI Premium Header"."Premium No.";
+            TableRelation = "STI Insurance Header"."Premium No.";
             DataClassification = ToBeClassified;
         }
 
@@ -180,7 +180,7 @@ table 50003 "STI Premium Reinsurance Line"
 
     procedure CalcParticipationAmount()
     var
-        PremiumHeader: Record "STI Premium Header";
+        PremiumHeader: Record "STI Insurance Header";
     begin
         if PremiumHeader.Get("Premium No.") then
             "Participation Amount" := Round(PremiumHeader."Premium Amount" * ("Participation %" / 100), 0.01);

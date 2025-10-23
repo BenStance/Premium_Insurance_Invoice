@@ -3,7 +3,7 @@ namespace BCEXPERTROAD.BCEXPERTROAD;
 page 50017 "STI Reinsurance Subpage"
 {
     PageType = ListPart;
-    SourceTable = "STI Premium Reinsurance Line";
+    SourceTable = "STI Insurance Reinsurance Line";
     Caption = 'Reinsurance Partners';
     ApplicationArea = All;
     DelayedInsert = true;
